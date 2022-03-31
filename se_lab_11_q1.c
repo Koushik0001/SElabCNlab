@@ -1,5 +1,3 @@
-// Soumyadeep Pal (Roll No. - 002011001113)
-
 /*
  * Software Engineering Lab - Team 3
  *
