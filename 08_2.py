@@ -79,9 +79,9 @@
 #       p(k = 3) = 1/8 = 0.125
 #
 #   Results Of Physical Coin Toss:
-#        1 th round : H T H
-#        2 th round : T T H
-#        3 th round : H H H
+#        1 st round : H T H
+#        2 nd round : T T H
+#        3 rd round : H H H
 #        4 th round : H H H
 #        5 th round : T T H
 #        6 th round : H H H
@@ -211,12 +211,14 @@ class Binomial_experiment():
     
     def get_xvalues(self):
         """This function rturns a list of x values necessary for plotting the results of the 
-        simulation experiment"""
+        binomial function[Bin(n,p) = nCk * (p^k) * ((1-p)^(n-k))] for specific n and p values 
+        and different k values"""
         return list(range(0,self.n+1))
 
     def get_yvalues(self):
         """This function rturns a list of y values i.e 'ResultList' necessary for plotting the 
-        results of the simulation experiment"""
+        results of the binomial function[Bin(n,p) = nCk * (p^k) * ((1-p)^(n-k))] for specific n 
+        and p values and different k values"""
         return list(self.binomial(k) for k in range(0,self.n+1))
 ################################################################################################
 
@@ -265,11 +267,11 @@ class Coin_Toss():
                             # Main Body of The Program #
 try:
     if( len(sys.argv)< 4):
-        raise InvalidInput("Insufficient CommandLine arguments...Three arguments are needed to execute the program...")
+        raise InvalidInput("Insufficient CommandLine arguments.Usage : 08_2.py <numberOfTriels> <probability> <exp. multiplier>")
     elif(sys.argv[2].find('/') == -1):
         raise InvalidInput("Second argument should be provided in the form p/q, where,{p,q} belongs to set of Integer numbers and q != 0")
     elif(sys.argv[1].find('.') != -1):
-        raise InvalidInput("The 1st argument should a non-Zero Integer...")
+        raise InvalidInput("1st argument should a non-Zero Integer...")
     elif(sys.argv[2].find('.') != -1):
         raise InvalidInput("Numerator and denominator of the 2nd argument should be Integers...")
     elif(int(sys.argv[1])<3):
@@ -287,6 +289,7 @@ except InvalidInput as eII:
     print(eII)
     sys.exit()
 else:
+
     #Part 1
     theoreticalExperiment = Binomial_experiment(n = int(sys.argv[1]),p = getProbability(2))
 
